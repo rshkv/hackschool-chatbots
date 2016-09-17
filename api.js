@@ -5,35 +5,35 @@ var token = config.getToken();
 var baseUrl = config.url;
 
 exports.getStations = function (query) {
-  var serviceName = 'location.name'; // Name of the API service
-  var parameters = { // Parameters for the API
+  // Name of the API service
+  var serviceName = 'location.name';
+  // Parameters for the API
+  var parameters = {
     input: query,
-    accessId: token,
-    format: 'json',
     type: 'S'
   };
-  return callToAPI(serviceName, parameters); // Return the API call as promise
+  // Return the API call as promise
+  return callToAPI(serviceName, parameters);
 };
 
 exports.getDepartures = function (id) {
-  var serviceName = 'departureBoard'; // Name of the API service
-  var parameters = {  // Parameters for the API
-    id: id,
-    accessId: token,
-    format: 'json'
-  };
-  return callToAPI(serviceName, parameters); // Return the API call as promise
+  // Name of the API service
+  var serviceName = 'departureBoard';
+  // Parameters for the API
+  var parameters = {id: id};
+  // Return the API call as promise
+  return callToAPI(serviceName, parameters);
 };
 
 exports.getTrip = function (fromId, toId) {
-  var serviceName = 'trip'; // Name of the API service
-  var parameters = {  // Parameters for the API
+  // Name of the API service
+  var serviceName = 'trip';
+  // Parameters for the API
+  var parameters = {
     originId: fromId,
-    destId: toId,
-    accessId: token,
-    format: 'json'
+    destId: toId
   };
-
+  // Return the API call as promise
   return callToAPI(serviceName, parameters);
 };
 
@@ -50,8 +50,7 @@ function urlParams(params, separator = '&') {
   }
   // join and return all 'key=value' pairs joined with the separator
   // i.e.: key1=value1&key2=value2&...
-  var queryString = pairs.join(separator);
-  return queryString;
+  return pairs.join(separator);
 }
 
 
@@ -59,6 +58,9 @@ function urlParams(params, separator = '&') {
 // To understand 'promises' in JS, check out:
 // https://spin.atomicobject.com/2016/02/16/how-javascript-promises-work/
 function callToAPI(serviceName, parameters) {
+  // Add access token and format setting to parameters
+  parameters.accessId = token;
+  parameters.format = 'json';
   // Create a new promise
   // If the data couldn't be retrieved, reject(error) is called
   // If the data was retrieved, resolve(body) is called
@@ -69,7 +71,7 @@ function callToAPI(serviceName, parameters) {
     request(
       // Url to send the request to
       `${baseUrl}/${serviceName}?${urlParams(parameters)}`,
-      // The returned data is a json, make sure 'format=json' is in the params
+      // The returned data is a json
       {json: true},
       // Callback, the function called once the server (API) responded
       (error, response, body) => {
