@@ -17,6 +17,7 @@ intents.matches(/change name/, [
     }
 ]);
 
+
 intents.matches(/departures from/, [
 	
     
@@ -55,6 +56,7 @@ bot.dialog('/', [
     },
     function (session, results) {
     	session.send('Ok, showing you departures from %s!', results.response);
+
     	api.getStations(results.response)
 		  .then(response => {
 		    // Access the list of stops
@@ -76,6 +78,7 @@ bot.dialog('/', [
 		      console.log(`${time} ${line} → ${departure.direction}`);
 		    }
 		  });
+
 		  session.endDialog();
     }
 ]);*/
