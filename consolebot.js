@@ -10,12 +10,6 @@ console.log('What do you want to do?');
 
 bot.dialog('/', intents);
 
-intents.matches(/^(departures) \1/i, [
-    function (session) {
-        session.beginDialog('/departures');
-    }
-]);
-
 intents.matches(/^departures/i, [
     function (session) {
         session.beginDialog('/departures');
