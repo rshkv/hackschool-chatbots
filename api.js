@@ -25,7 +25,7 @@ exports.getDepartures = function (id) {
   return callToAPI(serviceName, parameters);
 };
 
-exports.getTrip = function (fromId, toId) {
+exports.getTrips = function (fromId, toId) {
   // Name of the API service
   var serviceName = 'trip';
   // Parameters for the API
