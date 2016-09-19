@@ -4,7 +4,7 @@ let config = require('./config.js');
 var token = config.getToken();
 var baseUrl = config.url;
 
-exports.getStations = function (query) {
+exports.getStations = query => {
   // Name of the API service
   var serviceName = 'location.name';
   // Parameters for the API
@@ -16,7 +16,7 @@ exports.getStations = function (query) {
   return callToAPI(serviceName, parameters);
 };
 
-exports.getDepartures = function (id) {
+exports.getDepartures = id => {
   // Name of the API service
   var serviceName = 'departureBoard';
   // Parameters for the API
@@ -25,7 +25,7 @@ exports.getDepartures = function (id) {
   return callToAPI(serviceName, parameters);
 };
 
-exports.getTrips = function (fromId, toId) {
+exports.getTrips = (fromId, toId) => {
   // Name of the API service
   var serviceName = 'trip';
   // Parameters for the API
