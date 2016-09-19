@@ -9,13 +9,17 @@ var intents = new builder.IntentDialog();
 bot.dialog('/', intents);
 
 // Message routing
+var firstAnswer = "Hi there! What do you want to do?";
 var defaultAnswer = "I'm sorry. I didn't understand. What do you want to do?";
+var cancelAnswer = "No problem. What do you want to do instead?";
 intents
+  .onBegin(builder.DialogAction.send(firstAnswer))
   .onDefault(builder.DialogAction.send(defaultAnswer))
-  .matches(/departures/i, '/departures');
+  .matches(/departures/i, '/departures')
+  .matches(/cancel/i, builder.DialogAction.send(cancelAnswer));
 
 // Getting departures
-bot.dialog('/departures', function (session, args) {
+bot.dialog('/departures', (session, args) => {
   var input = args.matched.input;
   // Check if a 'from' was in the input
   // If no, ask for the station
@@ -25,41 +29,45 @@ bot.dialog('/departures', function (session, args) {
   else {
     // Use regex to capture string after 'from'
     var captureRegex = /from(.*)$/;
-    var match = captureRegex.exec(input)[0];
+    var match = captureRegex.exec(input)[1];
     var stationQuery = match.trim();
     session.beginDialog('/departures/confirmStation', {stationQuery: match.trim()});
   }
 });
 
 bot.dialog('/departures/chooseStation', [
-  function (session) {
+  session => {
     builder.Prompts.text(session, "Ok! Which station's departures do you want to see?");
   },
-  function (session, results) {
+  (session, results) => {
     session.beginDialog('/departures/confirmStation', {stationQuery: results.response});
   }
 ]);
 
 bot.dialog('/departures/confirmStation', [
-  function (session, args) {
+  (session, args) => {
     api.getStations(args.stationQuery)
-      .then(function (response) {
+      .then(response => {
         // Get and save the list of stops
         var stops = response['stopLocationOrCoordLocation']
-          .map(function (stop) { return stop['StopLocation']; });
+          .map(stop => { return stop['StopLocation']; });
         session.dialogData.stops = stops;
 
         // Join the stop names to ask which one was meant
         var stopsString = stops
-          .map(function (stop, index) {
+          .map((stop, index) => {
             return (index + 1) + ':\t' + stop.name;
           })
           .join('\n');
         session.send("I got these stations:\n%s", stopsString);
         builder.Prompts.number(session, "Which one did you mean? (Enter number)")
-      });
+      })
+      .catch(error => {
+        session.send('There was an error with the API:\n %s!', error.message);
+        session.endDialog();
+      });;
   },
-  function (session, results) {
+  (session, results) => {
     // Get the stop for the selected index
     var selectedIndex = results.response;
     var selectedStop = session.dialogData.stops[selectedIndex - 1];
@@ -67,14 +75,14 @@ bot.dialog('/departures/confirmStation', [
   }
 ]);
 
-bot.dialog('/departures/showResults', function (session, args) {
+bot.dialog('/departures/showResults', (session, args) => {
     api.getDepartures(args.selectedStop.id)
-      .then(function (response) {
+      .then(response => {
         session.send(args.selectedStop.name);
 
         // Show departures
         var departures = response['Departure'];
-        var departureLines = departures.map(function (departure) {
+        var departureLines = departures.map(departure => {
           // Get time without seconds
           var time = departure.time.slice(0, 5);
           // Get right padded line name
@@ -84,7 +92,7 @@ bot.dialog('/departures/showResults', function (session, args) {
         session.send(departureLines.join('\n'));
         session.endDialog();
       })
-      .catch(function (error) {
+      .catch(error => {
         session.send('There was an error with the API:\n %s!', error.message);
         session.endDialog();
       });
