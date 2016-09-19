@@ -21,7 +21,7 @@
     ```
     A folder named _vbb-bot_ will be created.
     
-2. We need some other people's code, too. Go inside that folder with
+2. We need some other people's code too. Go inside that folder with
     ```
     cd vbb-bot
     ```
