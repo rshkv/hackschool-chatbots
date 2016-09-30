@@ -10,7 +10,7 @@
 3. Make sure you have the newest version of node. 
     ```
     node --version
-    >>> v6.6.0
+    >>> v6.7.0
     ```
     Something above 6.5 is fine. (This is because of node's [ES6](https://github.com/lukehoban/es6features) support.)
 
@@ -19,11 +19,11 @@
     ```
     git clone https://github.com/rshkv/vbb-bot.git
     ```
-    A folder named _vbb-bot_ will be created.
+    A folder named _hackschool-chatbots_ will be created.
     
 2. We need some other people's code too. Go inside that folder with
     ```
-    cd vbb-bot
+    cd hackschool-chatbots
     ```
     and run
     ```
