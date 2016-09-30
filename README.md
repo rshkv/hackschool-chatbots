@@ -6,6 +6,7 @@ Download node from [here](https://nodejs.org/en/) and check your version number 
     node --version
     >>> v6.7.0
     ```
+    
     Something above 6.5 is fine. (This is because of node's [ES6](https://github.com/lukehoban/es6features) support.)
 
 ## Get the code
