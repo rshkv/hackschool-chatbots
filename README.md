@@ -1,13 +1,6 @@
 # Getting Started
-## Install Node
-1. Make sure you have [brew](http://brew.sh) installed.
-2. Run
-    ```
-    brew update
-    brew install node
-    ```
-    
-3. Make sure you have the newest version of node. 
+## Install Node.js
+Download node from [here](https://nodejs.org/en/) and check your version number afterwards. Run this in the command line:
     ```
     node --version
     >>> v6.7.0
