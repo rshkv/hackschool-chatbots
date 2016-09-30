@@ -1,6 +1,6 @@
 # Getting Started
 ## Install Node.js
-    Download node from [here](https://nodejs.org/en/) and check your version number afterwards. Run this in the command line:
+Download node from [here](https://nodejs.org/en/) and check your version number afterwards. Run this in the command line:
     ```
     node --version
     >>> v6.7.0
