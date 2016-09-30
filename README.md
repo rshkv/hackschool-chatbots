@@ -23,7 +23,3 @@ Something above 6.5 is fine. (This is because of node's [ES6](https://github.com
     npm install
     ```
     This has the [node package manager](https://www.npmjs.com) install all the dependencies defined in [package.json](https://github.com/rshkv/vbb-bot/blob/master/package.json).
-
-## Access token
-To use the API you need an access token. We'll give you one.
-Put it in the [config.js](https://github.com/rshkv/vbb-bot/blob/master/config.js) file.

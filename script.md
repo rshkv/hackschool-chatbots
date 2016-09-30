@@ -1,21 +1,26 @@
 We introduce people with little to no coding experience to JavaScript and build a chatbot that gives real-Time information on Berlin's public transit 
 
 # Intoduction (10)
+Language?
 What will we do?
-Should you go to the other stream?
-    - How well do you code?
-    - Very slow pace
-    - Maybe we don't get to build a bot
+    - Is this the right stream for you?
+    - This is what we're going to do: ...
+    - This is how it might look in the end: ...
 Who are we?
     - CS Students 
     - Won a Hackathon (?)
-How can you help us?
-    - First time for us
+    - Who are you?
+    - Backgrounds/Systems
+This our first time, help us
     - Pleeeaaase ask question
     - If we're too fast or too slow, pleeeaaase tell us
+This is our timeline:
 
-# JS ($0)
-## Strings
+# JS (60)
+Go to Wiki
+Console
+
+Strings
     \n, ", \t, '
 ...
 
@@ -41,26 +46,26 @@ Tipps:
 
 # Using the VBB API (30)
 What is an API?
+    - "API"/"ReST"
+    - Somewhere a server runs
+    - Examples
+    - Looks at url, "what could she mean?"
+    - Progam parsing requested url
+    - Programms talking to each other over the web
 What is the VBB API telling us?
     - Look at documentation
-What are URL parameters?
+    - Services and parameters
+    - What are URL parameters?
 In-browser examples:
+    - http://jsonlint.com
     - Location.name
     - Departures
-Requests in Node:
-    - Requests library
-
-## Parameter query string generator 
-What is the task?
-How does it work?
-Send requests using our query string Generator
-Creating our API module
-
-# (Asynchronicity)
-- Promises
-- Asynchronous 
-- Do something that takes time and block
-- Do something w/o blocking 
+Build in Node:
+    - Request library
+    - Callback
+    - _Query string challenge_
+    - send requests using our query string Generator
+    - create API module
 
 # Building a bot 
 How do we set it up?
