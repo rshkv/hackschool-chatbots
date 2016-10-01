@@ -3,18 +3,25 @@ We introduce people with little to no coding experience to JavaScript and build 
 # Intoduction (10)
 Language?
 What will we do?
+
     - Is this the right stream for you?
     - This is what we're going to do: ...
     - This is how it might look in the end: ...
+
 Who are we?
     - CS Students 
     - Won a Hackathon (?)
     - Who are you?
     - Backgrounds/Systems
+
 This our first time, help us
     - Pleeeaaase ask question
     - If we're too fast or too slow, pleeeaaase tell us
+
 This is our timeline:
+
+# Setup (15)
+Installing Sublime and Node.js, Configuring Build System
 
 # JS (60)
 Go to Wiki
