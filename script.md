@@ -52,14 +52,13 @@ What is an API?
     - Looks at url, "what could she mean?"
     - Progam parsing requested url
     - Programms talking to each other over the web
+In-browser examples:
+    - http://jsonlint.com
+    - Location.name
 What is the VBB API telling us?
     - Look at documentation
     - Services and parameters
     - What are URL parameters?
-In-browser examples:
-    - http://jsonlint.com
-    - Location.name
-    - Departures
 Build in Node:
     - Request library
     - Callback
