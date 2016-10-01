@@ -1,19 +1,14 @@
-var api = require('./playground.js');
+var builder = require('botbuilder');
 
-var callbackFunc = function(body) {
-  var id = JSON.parse(body).stopLocationOrCoordLocation[0].StopLocation.id;
-  api.fetchData('departureBoard', {
-    accessId: "",
-    format: "json",
-    id: id
-  }, function (body) {
-    console.log(JSON.parse(body)) 
-  })
-};
+var connector = new builder.ConsoleConnector();
+connector.listen();
 
-var data = api.fetchData('location.name', {
-  accessId: "",
-  format: "json",
-  input: "rosenthaler",
-  type: "S"
-}, callbackFunc)
+var bot = new builder.UniversalBot(connector);
+bot.dialog('/', [
+  function(session) {
+    builder.Prompts.text(session, "Hey! What's your name?");
+  },
+  function (session, results) {
+    session.send('Hello %s!', results.response);
+  }
+])
