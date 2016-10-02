@@ -1,17 +1,34 @@
+/* 
+Don't forget to enter the Access Id
+*/
 var request = require('request');
 
 var baseUrl = "http://demo.hafas.de/openapi/vbb-proxy/";
 
-var fetchData = exports.fetchData = function(service, parameterString, callback) {
-  var url = baseUrl + service + "?" + parameterString;
-  request(url, function(error, response, body) {
+var parameterString = function(parameters) {
+  var string = ""
+  for (var parameter in parameters) {
+    var value = parameters[parameter];
+    string = string + parameter + "=" + value + "&";
+  }
+  return string;
+};
+
+var fetchData = function(service, parameters, callback) {
+  var url = baseUrl + service + "?" + parameterString(parameters);
+  request(url, function(error, response) {
+    var body = JSON.parse(response.body);
     callback(body);
   });
 }
 
 fetchData(
-  "location.name",
-  "format=json&input=rosenthaler&accessId=hackerstolz-01102016&type=S",
+  "location.name", {
+    format: "json",
+    input: "rosenthaler",
+    accessId: "ACCESS_ID_HERE",
+    type: "S"
+  },
   function(body) {
     console.log(body);
   });

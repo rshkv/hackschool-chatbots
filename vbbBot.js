@@ -1,3 +1,6 @@
+/*
+Don't forget to enter the Access Id
+*/
 var builder = require('botbuilder');
 var request = require('request');
 
@@ -25,7 +28,7 @@ bot.dialog('/departure', [
     fetchData('location.name', {
       input: results.response,
       type: "S",
-      accessId: "hackerstolz-01102016",
+      accessId: "ACCESS_ID_HERE",
       format: "json"
     }, function(body) {
       var data = JSON.parse(body);
