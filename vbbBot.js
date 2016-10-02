@@ -50,7 +50,7 @@ bot.dialog('/departure', [
           var time = departure.time.slice(0, 5);
           // Get right padded line name
           var line = (new Array(8).join(' ') + departure.name.trim()).slice(-8);
-          return `${time} ${line} → ${departure.direction}`;
+          return time + " " + line + " → " + departure.direction;
         });
         session.send(departureLines.join('\n'));
         session.endDialog();
